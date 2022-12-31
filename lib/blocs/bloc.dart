@@ -21,4 +21,4 @@ class Bloc extends Object with Validators {
 }
 
 //this is a Global instance bloc it can be export
-final bloc = Bloc();
+// final bloc = Bloc();
