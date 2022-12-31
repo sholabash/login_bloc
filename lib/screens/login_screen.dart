@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
-import '../blocs/bloc.dart';
 import '../blocs/provider.dart';
+import '../blocs/bloc.dart';
 
 class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
+    final bloc = Provider.of(context);
     return Container(
       margin: EdgeInsets.all(20.0),
       child: Column(
         children: [
-          emailField(Bloc()),
-          passwordField(Bloc()),
+          emailField(bloc),
+          passwordField(bloc),
           Container(
             margin: EdgeInsets.only(bottom: 20.0),
           ),
