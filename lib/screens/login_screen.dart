@@ -29,7 +29,7 @@ class LoginScreen extends StatelessWidget {
         // ignore: prefer_const_constructors
         return TextField(
           onChanged: bloc.changeEmail,
-          keyboardType: TextInputType.emailAddress,
+          // keyboardType: TextInputType.emailAddress,
           // ignore: prefer_const_constructors
           decoration: InputDecoration(
             hintText: 'you@example.com',
@@ -73,11 +73,7 @@ class LoginScreen extends StatelessWidget {
             // ignore: prefer_const_constructors
             minimumSize: Size(500, 36),
           ),
-          onPressed: snapshot.hasData
-              ? () {
-                  print('hi there');
-                }
-              : null,
+          onPressed: snapshot.hasData ? bloc.submit() : null,
         );
       },
     );
