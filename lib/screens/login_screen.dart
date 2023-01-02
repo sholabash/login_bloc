@@ -1,3 +1,5 @@
+// ignore_for_file: sort_child_properties_last
+
 import 'package:flutter/material.dart';
 import '../blocs/provider.dart';
 import '../blocs/bloc.dart';
@@ -14,7 +16,7 @@ class LoginScreen extends StatelessWidget {
           Container(
             margin: EdgeInsets.only(bottom: 20.0),
           ),
-          submitButton(),
+          submitButton(bloc),
         ],
       ),
     );
@@ -60,15 +62,24 @@ class LoginScreen extends StatelessWidget {
     // ignore: prefer_const_constructors
   }
 
-  Widget submitButton() {
-    return TextButton(
-      style: TextButton.styleFrom(
-        foregroundColor: Colors.white, backgroundColor: Colors.blue,
-        // ignore: prefer_const_constructors
-        minimumSize: Size(500, 36),
-      ),
-      child: Text('Login'),
-      onPressed: () {},
+  Widget submitButton(Bloc bloc) {
+    return StreamBuilder(
+      stream: bloc.submiValid,
+      builder: (context, snapshot) {
+        return TextButton(
+          child: Text('Login'),
+          style: TextButton.styleFrom(
+            foregroundColor: Colors.white, backgroundColor: Colors.blue,
+            // ignore: prefer_const_constructors
+            minimumSize: Size(500, 36),
+          ),
+          onPressed: snapshot.hasData
+              ? () {
+                  print('hi there');
+                }
+              : null,
+        );
+      },
     );
   }
 }
